@@ -5,14 +5,14 @@ public class Ass01_RockPaperScissors {
         String PlayerA = "";
         String PlayerB = "";
         String GameResp = "";
-        boolean BlockVal = true;
+        boolean blockVal = true;
         boolean newGame = false;
         Scanner in = new Scanner(System.in);
         System.out.println("Do you want to play Rock, Scissors, Paper? [Y/N]");
         do {
             GameResp = in.nextLine();
             if (GameResp.equalsIgnoreCase("Y")) {
-                BlockVal = true;
+                blockVal = true;
             }
             else if (GameResp.equalsIgnoreCase("N")) {
                 System.out.println("Okay. Maybe next time. ");
@@ -20,33 +20,33 @@ public class Ass01_RockPaperScissors {
             }
             else {
                 System.out.println("Invalid Entry. Please select [Y/N]");
-                BlockVal = false;
+                blockVal = false;
             }
         }
-        while (!BlockVal);
+        while (!blockVal);
         do {
                 System.out.println("You can be Player A. What is your move Rock [R], Scissors [S] or Paper [P]? ");
                 do {
                     PlayerA = in.nextLine();
                     if (PlayerA.matches("(?i)R|P|S")) {
-                        BlockVal = true;
+                        blockVal = true;
                     } else {
                         System.out.println("Invalid Selection [" + PlayerA + "]. Please select [R/P/S].");
-                        BlockVal = false;
+                        blockVal = false;
                     }
                 }
-                while (!BlockVal);
+                while (!blockVal);
                 System.out.println("Next up is Player B. What is your move Rock [R], Scissors [S] or Paper [P]? ");
                 do {
                     PlayerB = in.nextLine();
                     if (PlayerB.matches("(?i)R|P|S")) {
-                        BlockVal = true;
+                        blockVal = true;
                     } else {
                         System.out.println("Invalid Selection [" + PlayerB + "]. Please select [R/P/S].");
-                        BlockVal = false;
+                        blockVal = false;
                     }
                 }
-                while (!BlockVal);
+                while (!blockVal);
                 if (PlayerA.equalsIgnoreCase("R")) {
                     if (PlayerB.equalsIgnoreCase("R")) {
                         System.out.println("You both chose Rock. It's a Tie!");
@@ -73,13 +73,21 @@ public class Ass01_RockPaperScissors {
                     }
                 }
                 System.out.println("Do you want to play again? [Y/N]");
-                GameResp = in.nextLine();
-                if (GameResp.equalsIgnoreCase("y")) {
-                    newGame = true;
-                } else if (GameResp.equalsIgnoreCase("n")) {
-                    System.out.println("Thanks for Playing!");
-                    System.exit(0);
+                do {
+                    GameResp = in.nextLine();
+                    if (GameResp.equalsIgnoreCase("y")) {
+                        newGame = true;
+                    }
+                    else if (GameResp.equalsIgnoreCase("n")) {
+                        System.out.println("Thanks for Playing!");
+                        System.exit(0);
+                    }
+                    else{
+                        System.out.println("Invalid Entry. Please select [Y/N]");
+                        blockVal = false;
+                    }
                 }
+                while (!blockVal);
             }
             while (newGame = true);
         }
